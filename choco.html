@@ -1,0 +1,3237 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Aravali International School - Ignite Sports & Cultural Day 2026</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+            <style>
+                /* Reset and Base Styles */
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                }
+
+                html {
+                    scroll-behavior: smooth;
+                }
+
+                :root {
+                    --primary-color: #0f172a;       /* Dark blue/black */
+                    --secondary-color: #7c3aed;     /* Purple */
+                    --accent-color: #06b6d4;        /* Cyan */
+                    --highlight-color: #f59e0b;     /* Amber */
+                    --light-color: #f8fafc;
+                    --dark-color: #020617;
+                    --gray-color: #334155;
+                    --border-radius: 10px;
+                    --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+                    --sports-color: #3b82f6;        /* Blue for Sports */
+                    --cultural-color: #10b981;      /* Green for Cultural */
+                    --green-room-color: #22c55e;    /* Green for Green Room */
+                }
+
+                body {
+                    background-color: var(--dark-color);
+                    color: var(--light-color);
+                    line-height: 1.6;
+                    overflow-x: hidden;
+                }
+
+                .container {
+                    width: 90%;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 0 15px;
+                }
+
+                /* Music Controls */
+                .music-controls {
+                    position: fixed;
+                    bottom: 30px;
+                    left: 30px;
+                    z-index: 1001;
+                    background: rgba(15, 23, 42, 0.95);
+                    border-radius: 50px;
+                    padding: 15px 25px;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+                    border: 2px solid var(--accent-color);
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    transition: all 0.3s;
+                    backdrop-filter: blur(10px);
+                    animation: slideInLeft 0.5s ease-out;
+                }
+
+                @keyframes slideInLeft {
+                    from {
+                        opacity: 0;
+                        transform: translateX(-50px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+
+                .music-controls:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 15px 40px rgba(6, 182, 212, 0.4);
+                }
+
+                .music-toggle-btn {
+                    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+                    border: none;
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                    color: white;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 0.3s;
+                    box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+                }
+
+                .music-toggle-btn:hover {
+                    transform: scale(1.1);
+                    box-shadow: 0 0 30px rgba(124, 58, 237, 0.7);
+                }
+
+                .music-toggle-btn.playing {
+                    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+                    animation: pulse 2s infinite;
+                }
+
+                @keyframes pulse {
+                    0% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.5); }
+                    50% { box-shadow: 0 0 30px rgba(6, 182, 212, 0.8); }
+                    100% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.5); }
+                }
+
+                .music-info {
+                    color: white;
+                    font-size: 0.9rem;
+                    display: block;
+                    min-width: 180px;
+                }
+
+                .music-info h4 {
+                    color: var(--accent-color);
+                    margin-bottom: 5px;
+                    font-size: 1rem;
+                }
+
+                .music-info p {
+                    color: #94a3b8;
+                    font-size: 0.8rem;
+                    margin-bottom: 5px;
+                }
+
+                .volume-control {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-top: 5px;
+                }
+
+                .volume-control i {
+                    color: var(--accent-color);
+                    font-size: 1rem;
+                }
+
+                .volume-slider {
+                    width: 100px;
+                    height: 5px;
+                    -webkit-appearance: none;
+                    appearance: none;
+                    background: rgba(255, 255, 255, 0.1);
+                    border-radius: 5px;
+                    outline: none;
+                }
+
+                .volume-slider::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background: var(--accent-color);
+                    cursor: pointer;
+                    box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+                }
+
+                .volume-slider::-moz-range-thumb {
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background: var(--accent-color);
+                    cursor: pointer;
+                    border: none;
+                }
+
+                /* Music Status Message */
+                .music-status {
+                    position: fixed;
+                    top: 100px;
+                    right: 30px;
+                    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 27, 75, 0.9));
+                    padding: 15px 25px;
+                    border-radius: var(--border-radius);
+                    border: 2px solid var(--accent-color);
+                    color: white;
+                    font-size: 1rem;
+                    z-index: 1000;
+                    animation: slideInRight 0.5s ease-out;
+                    display: none;
+                    backdrop-filter: blur(10px);
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                    max-width: 300px;
+                }
+
+                @keyframes slideInRight {
+                    from {
+                        opacity: 0;
+                        transform: translateX(100px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+
+                .music-status.success {
+                    border-color: #10b981;
+                }
+
+                .music-status.error {
+                    border-color: #ef4444;
+                }
+
+                /* Header Styles - FIXED */
+                .main-header {
+                    background: rgba(15, 23, 42, 0.95);
+                    backdrop-filter: blur(10px);
+                    color: white;
+                    padding: 1.2rem 0;
+                    position: sticky;
+                    top: 0;
+                    z-index: 100;
+                    border-bottom: 1px solid rgba(124, 58, 237, 0.3);
+                    transition: transform 0.3s ease-in-out;
+                    transform: translateY(0);
+                }
+
+                .main-header.hide-header {
+                    transform: translateY(-100%);
+                }
+
+                .header-content {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-wrap: wrap;
+                }
+
+                .logo-section {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    flex: 1;
+                    min-width: 300px;
+                }
+
+                .logo-placeholder {
+                    width: 115px;
+                    height: 115px;
+                    background: rgba(253, 253, 253, 0.832);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: 3px solid black;
+                    box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+                    flex-shrink: 0;
+                }
+
+                .logo-text {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1;
+                }
+
+                .logo-text h1 {
+                    font-size: 1.8rem;
+                    margin-bottom: 5px;
+                    background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent;
+                    font-weight: 800;
+                    line-height: 1.2;
+                }
+
+                .logo-text p {
+                    font-size: 0.9rem;
+                    opacity: 0.8;
+                    letter-spacing: 1px;
+                }
+
+                /* Fixed Navigation Menu */
+                .nav-menu {
+                    flex: 1;
+                    min-width: 315px;
+                    display: flex;
+                    justify-content: flex-end;
+                }
+
+                .nav-menu ul {
+                    display: flex;
+                    list-style: none;
+                    gap: 15px;
+                    flex-wrap: wrap;
+                    justify-content: flex-end;
+                }
+
+                .nav-menu a {
+                    color: white;
+                    text-decoration: none;
+                    font-weight: 600;
+                    font-size: 1.1rem;
+                    transition: all 0.3s;
+                    padding: 8px 12px;
+                    border-radius: var(--border-radius);
+                    position: relative;
+                    white-space: nowrap;
+                }
+
+                .nav-menu a:hover {
+                    color: var(--accent-color);
+                    background-color: rgba(124, 58, 237, 0.1);
+                }
+
+                /* Hero Section with Parallax */
+                .hero-section {
+                    background: 
+                        linear-gradient(rgba(2, 6, 23, 0.9), rgba(15, 23, 42, 0.9)),
+                        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+                    background-size: cover;
+                    background-position: center;
+                    background-attachment: fixed;
+                    color: white;
+                    padding: 6rem 0;
+                    text-align: center;
+                    position: relative;
+                    overflow: hidden;
+                    min-height: 100vh;
+                    display: flex;
+                    align-items: center;
+                }
+
+                .hero-section::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: radial-gradient(circle at 30% 50%, rgba(124, 58, 237, 0.2) 0%, transparent 50%),
+                                radial-gradient(circle at 70% 20%, rgba(6, 182, 212, 0.15) 0%, transparent 50%);
+                    animation: float 20s ease-in-out infinite;
+                }
+
+                @keyframes float {
+                    0%, 100% { transform: translateY(0px) translateX(0px); }
+                    25% { transform: translateY(-8px) translateX(4px); }
+                    50% { transform: translateY(4px) translateX(-4px); }
+                    75% { transform: translateY(-4px) translateX(-2px); }
+                }
+
+                .hero-content {
+                    position: relative;
+                    z-index: 2;
+                    animation: fadeInUp 1s ease-out;
+                }
+
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+                .hero-content h2 {
+                    font-size: 3.5rem;
+                    margin-bottom: 1.5rem;
+                    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+                    background: linear-gradient(to right, white, var(--accent-color));
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent;
+                    animation: textGlow 3s ease-in-out infinite alternate;
+                }
+
+                @keyframes textGlow {
+                    0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(6, 182, 212, 0.3); }
+                    100% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(6, 182, 212, 0.5); }
+                }
+
+                .hero-content p {
+                    font-size: 1.3rem;
+                    max-width: 800px;
+                    margin: 0 auto 2rem;
+                    color: #cbd5e1;
+                }
+
+                /* Live Now Badge */
+                .live-now-container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 25px;
+                    margin: 3rem 0;
+                    animation: slideIn 1s ease-out 0.5s both;
+                }
+
+                @keyframes slideIn {
+                    from {
+                        opacity: 0;
+                        transform: translateX(-50px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+
+                .live-now-badge {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    background: linear-gradient(135deg, #ef4444, #dc2626);
+                    color: white;
+                    padding: 12px 25px;
+                    border-radius: 50px;
+                    font-weight: 700;
+                    font-size: 1.2rem;
+                    box-shadow: 0 0 25px rgba(239, 68, 68, 0.4);
+                    animation: pulse 2s infinite;
+                }
+
+                .live-now-badge .blink-dot {
+                    width: 12px;
+                    height: 12px;
+                    background-color: white;
+                    border-radius: 50%;
+                    animation: blink 1.5s infinite;
+                }
+
+                @keyframes blink {
+                    0%, 100% { opacity: 1; }
+                    50% { opacity: 0.3; }
+                }
+
+                /* Current Event Statistics - CONSTANT VALUES */
+                .current-event-stats {
+                    background: rgba(15, 23, 42, 0.7);
+                    border-radius: var(--border-radius);
+                    padding: 2rem;
+                    backdrop-filter: blur(10px);
+                    border: 1px solid rgba(124, 58, 237, 0.3);
+                    max-width: 800px;
+                    width: 100%;
+                    text-align: center;
+                    transition: all 0.3s;
+                    animation: fadeIn 1s ease-out 0.7s both;
+                }
+
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+
+                .current-event-stats:hover {
+                    border-color: var(--accent-color);
+                    box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
+                    transform: translateY(-5px);
+                }
+
+                .current-event-stats h3 {
+                    color: var(--accent-color);
+                    font-size: 1.8rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .current-time {
+                    color: var(--highlight-color);
+                    font-size: 1.3rem;
+                    margin-bottom: 1rem;
+                    font-weight: 600;
+                    animation: timeGlow 2s ease-in-out infinite;
+                }
+
+                @keyframes timeGlow {
+                    0%, 100% { opacity: 1; }
+                    50% { opacity: 0.8; }
+                }
+
+                .current-event-stats p {
+                    color: #cbd5e1;
+                    margin-bottom: 1.5rem;
+                    font-size: 1.1rem;
+                }
+
+                .event-details {
+                    display: flex;
+                    justify-content: space-around;
+                    margin-top: 1.5rem;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                }
+
+                .event-detail-item {
+                    text-align: center;
+                    flex: 1;
+                    min-width: 120px;
+                }
+
+                .event-detail-value {
+                    color: var(--highlight-color);
+                    font-size: 1.8rem;
+                    font-weight: 700;
+                    margin-bottom: 5px;
+                    transition: transform 0.3s;
+                }
+
+                .event-detail-label {
+                    color: #94a3b8;
+                    font-size: 0.9rem;
+                    text-transform: uppercase;
+                    letter-spacing: 1.5px;
+                }
+
+                /* Houses Display - REMOVED FROM HERO */
+
+                /* Section Styling */
+                .section {
+                    padding: 5rem 0;
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                .section-header {
+                    text-align: center;
+                    margin-bottom: 4rem;
+                    position: relative;
+                    z-index: 2;
+                }
+
+                .section-header h2 {
+                    font-size: 2.8rem;
+                    margin-bottom: 15px;
+                    position: relative;
+                    display: inline-block;
+                    padding-bottom: 15px;
+                }
+
+                .section-header h2::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 100px;
+                    height: 4px;
+                    background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+                    border-radius: 2px;
+                    animation: lineExpand 2s ease-in-out infinite;
+                }
+
+                @keyframes lineExpand {
+                    0%, 100% { width: 100px; }
+                    50% { width: 150px; }
+                }
+
+                /* Highlights Section */
+                .highlights-section {
+                    background: linear-gradient(135deg, rgba(2, 6, 23, 0.9), rgba(15, 23, 42, 0.9));
+                }
+
+                .highlights-container {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 30px;
+                    margin-top: 2rem;
+                    position: relative;
+                    z-index: 2;
+                }
+
+                .highlight-card {
+                    background: linear-gradient(145deg, rgba(30, 27, 75, 0.7), rgba(15, 23, 42, 0.9));
+                    border-radius: var(--border-radius);
+                    padding: 2.5rem 2rem;
+                    box-shadow: var(--box-shadow);
+                    text-align: center;
+                    transition: all 0.4s;
+                    border: 1px solid rgba(124, 58, 237, 0.2);
+                    position: relative;
+                    overflow: hidden;
+                    transform-style: preserve-3d;
+                    perspective: 1000px;
+                }
+
+                .highlight-card::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 5px;
+                    background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+                    transform: translateZ(-1px);
+                }
+
+                .highlight-card:hover {
+                    transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
+                    border-color: var(--accent-color);
+                    box-shadow: 0 15px 40px rgba(6, 182, 212, 0.2);
+                }
+
+                .highlight-card i {
+                    font-size: 3.5rem;
+                    margin-bottom: 1.5rem;
+                    background: linear-gradient(to bottom, var(--accent-color), var(--secondary-color));
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent;
+                    animation: iconFloat 3s ease-in-out infinite;
+                }
+
+                @keyframes iconFloat {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-10px); }
+                }
+
+                .highlight-card h3 {
+                    color: #e2e8f0;
+                    margin-bottom: 1rem;
+                    font-size: 1.5rem;
+                }
+
+                .highlight-card .value {
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    color: white;
+                    margin: 1rem 0;
+                    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+                }
+
+                .highlight-card .description {
+                    color: #94a3b8;
+                    font-size: 1rem;
+                    line-height: 1.6;
+                }
+
+                /* Sports & Cultural Spirit Events */
+                .events-section {
+                    background: linear-gradient(135deg, rgba(2, 6, 23, 0.9), rgba(30, 27, 75, 0.9));
+                }
+
+                .spirit-category {
+                    margin-bottom: 5rem;
+                }
+
+                .spirit-category:last-child {
+                    margin-bottom = 0;
+                }
+
+                .category-header {
+                    text-align: center;
+                    margin-bottom: 3rem;
+                }
+
+                .category-header h3 {
+                    font-size: 2.5rem;
+                    margin-bottom: 10px;
+                    padding-bottom: 15px;
+                    position: relative;
+                    display: inline-block;
+                }
+
+                .category-header h3::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 80px;
+                    height: 4px;
+                    border-radius: 2px;
+                }
+
+                .sports-spirit .category-header h3::after {
+                    background: linear-gradient(to right, var(--sports-color), #1d4ed8);
+                }
+
+                .cultural-spirit .category-header h3::after {
+                    background: linear-gradient(to right, var(--cultural-color), #059669);
+                }
+
+                .events-container {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                    gap: 20px;
+                    position: relative;
+                    z-index: 2;
+                }
+
+                .cultural-spirit .events-container {
+                    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                    gap: 15px;
+                }
+
+                .event-card {
+                    background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(30, 27, 75, 0.9));
+                    border-radius: var(--border-radius);
+                    padding: 2rem;
+                    box-shadow: var(--box-shadow);
+                    transition: all 0.3s;
+                    border: 1px solid rgba(124, 58, 237, 0.2);
+                    text-align: center;
+                    min-height: 300px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    transform-style: preserve-3d;
+                }
+
+                .sports-spirit .event-card {
+                    border-left: 5px solid var(--sports-color);
+                }
+
+                .cultural-spirit .event-card {
+                    border-left: 5px solid var(--cultural-color);
+                    padding: 1.2rem;
+                    min-height: 220px;
+                }
+
+                .event-card:hover {
+                    transform: translateY(-10px) rotateY(10deg);
+                    box-shadow: 0 15px 30px rgba(6, 182, 212, 0.2);
+                }
+
+                .sports-spirit .event-card:hover {
+                    border-color: var(--sports-color);
+                    box-shadow: 0 15px 30px rgba(59, 130, 246, 0.2);
+                }
+
+                .cultural-spirit .event-card:hover {
+                    border-color: var(--cultural-color);
+                    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.2);
+                }
+
+                .event-card h3 {
+                    margin-bottom: 1.5rem;
+                    font-size: 2rem;
+                }
+
+                .sports-spirit .event-card h3 {
+                    color: var(--sports-color);
+                }
+
+                .cultural-spirit .event-card h3 {
+                    color: var(--cultural-color);
+                    font-size: 1.4rem;
+                    margin-bottom: 1rem;
+                }
+
+                .event-card p {
+                    color: #cbd5e1;
+                    margin-bottom: 0.8rem;
+                    line-height: 1.7;
+                    font-size: 1.2rem;
+                }
+
+                .event-icon {
+                    font-size: 3rem;
+                    margin-bottom: 1.5rem;
+                    animation: iconPulse 2s ease-in-out infinite;
+                }
+
+                .sports-spirit .event-icon {
+                    color: var(--sports-color);
+                }
+
+                .cultural-spirit .event-icon {
+                    color: var(--cultural-color);
+                    font-size: 2.2rem;
+                    margin-bottom: 0.8rem;
+                }
+
+                .cultural-spirit .event-card p {
+                    font-size: 0.95rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                @keyframes iconPulse {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.1); }
+                }
+
+                /* Houses Section */
+                .houses-section {
+                    background: linear-gradient(135deg, rgba(30, 27, 75, 0.9), rgba(15, 23, 42, 0.9));
+                }
+
+                .houses-container {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                    gap: 30px;
+                    position: relative;
+                    z-index: 2;
+                }
+
+                .houses-card {
+                    background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(30, 27, 75, 0.9));
+                    border-radius: var(--border-radius);
+                    padding: 2rem;
+                    box-shadow: var(--box-shadow);
+                    border: 1px solid rgba(124, 58, 237, 0.2);
+                    animation: fadeInScale 0.5s ease-out;
+                }
+
+                @keyframes fadeInScale {
+                    from {
+                        opacity: 0;
+                        transform: scale(0.9);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
+                }
+
+                .houses-card h3 {
+                    color: white;
+                    margin-bottom: 2rem;
+                    text-align: center;
+                    font-size: 1.8rem;
+                    position: relative;
+                    padding-bottom: 15px;
+                }
+
+                .houses-card h3::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 60px;
+                    height: 3px;
+                    background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+                    border-radius: 2px;
+                }
+
+                .house-item {
+                    display: flex;
+                    align-items: center;
+                    padding: 1.5rem;
+                    border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+                    transition: all 0.3s;
+                }
+
+                .house-item:hover {
+                    background-color: rgba(124, 58, 237, 0.05);
+                    border-radius: 8px;
+                    transform: translateX(10px) scale(1.05);
+                }
+
+                .house-item:last-child {
+                    border-bottom: none;
+                }
+
+                .house-color {
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                    margin-right: 20px;
+                    box-shadow: 0 0 15px currentColor;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    animation: colorPulse 3s ease-in-out infinite;
+                }
+
+                @keyframes colorPulse {
+                    0%, 100% { box-shadow: 0 0 15px currentColor; }
+                    50% { box-shadow: 0 0 25px currentColor; }
+                }
+
+                .house-name {
+                    font-weight: 700;
+                    color: #e2e8f0;
+                    font-size: 1.4rem;
+                    flex: 1;
+                }
+
+                /* Color specific styles for houses */
+                .ruby-house .house-color {
+                    background-color: #dc2626;
+                    color: #dc2626;
+                }
+
+                .sapphire-house .house-color {
+                    background-color: #2563eb;
+                    color: #2563eb;
+                }
+
+                .emerald-house .house-color {
+                    background-color: #10b981;
+                    color: #10b981;
+                }
+
+                .topaz-house .house-color {
+                    background-color: #f59e0b;
+                    color: #f59e0b;
+                }
+
+                /* Compact variant for smaller/congested houses display */
+                .houses-section.compact-houses {
+                    padding: 2rem 0;
+                }
+
+                .houses-container.compact {
+                    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                    gap: 12px;
+                }
+
+                .houses-card {
+                    padding: 1rem;
+                }
+
+                .houses-card h3 {
+                    font-size: 1.05rem;
+                    margin-bottom: 0.6rem;
+                }
+
+                .house-item {
+                    padding: 10px 8px;
+                    border-bottom: 1px solid rgba(124, 58, 237, 0.06);
+                    align-items: center;
+                }
+
+                .house-color {
+                    width: 24px;
+                    height: 24px;
+                    margin-right: 12px;
+                }
+
+                .house-name {
+                    font-size: 1rem;
+                }
+
+                /* Schedule & Green Room Section - NEW LAYOUT */
+                .schedule-greenroom-section {
+                    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.9));
+                }
+
+                .dual-container {
+                    display: flex;
+                    gap: 30px;
+                    margin-top: 2rem;
+                    flex-wrap: wrap;
+                    position: relative;
+                    z-index: 2;
+                }
+
+                .schedule-container, .greenroom-container {
+                    flex: 1;
+                    min-width: 300px;
+                    background: linear-gradient(145deg, rgba(30, 27, 75, 0.7), rgba(15, 23, 42, 0.9));
+                    border-radius: var(--border-radius);
+                    box-shadow: var(--box-shadow);
+                    border: 1px solid rgba(124, 58, 237, 0.2);
+                    overflow: hidden;
+                    transition: all 0.3s;
+                }
+
+                .schedule-container:hover, .greenroom-container:hover {
+                    border-color: var(--accent-color);
+                    box-shadow: 0 15px 40px rgba(6, 182, 212, 0.2);
+                    transform: translateY(-5px);
+                }
+
+                .schedule-header, .greenroom-header {
+                    background: linear-gradient(135deg, var(--secondary-color), #4f46e5);
+                    color: white;
+                    padding: 20px;
+                    text-align: center;
+                    border-bottom: 3px solid var(--accent-color);
+                }
+
+                .schedule-header h3, .greenroom-header h3 {
+                    font-size: 1.8rem;
+                    margin-bottom: 5px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                }
+
+                .schedule-header i {
+                    color: var(--accent-color);
+                }
+
+                .greenroom-header i {
+                    color: var(--green-room-color);
+                }
+
+                .schedule-header p, .greenroom-header p {
+                    color: #cbd5e1;
+                    font-size: 1rem;
+                    opacity: 0.9;
+                }
+
+                /* Schedule Table - Smaller */
+                .schedule-table-wrapper {
+                    overflow-x: auto;
+                    max-height: 600px;
+                    overflow-y: auto;
+                }
+
+                .schedule-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+
+                .schedule-table thead {
+                    background: rgba(30, 27, 75, 0.9);
+                    position: sticky;
+                    top: 0;
+                    z-index: 10;
+                }
+
+                .schedule-table th {
+                    color: white;
+                    padding: 15px 12px;
+                    text-align: left;
+                    font-weight: 600;
+                    font-size: 1rem;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    border-bottom: 2px solid var(--accent-color);
+                }
+
+                .schedule-table th i {
+                    margin-right: 8px;
+                    color: var(--accent-color);
+                }
+
+                .schedule-table tbody tr {
+                    background: rgba(15, 23, 42, 0.7);
+                    transition: all 0.3s;
+                    border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+                }
+
+                .schedule-table tbody tr:hover {
+                    background: rgba(30, 27, 75, 0.8);
+                    transform: scale(1.005);
+                }
+
+                .schedule-table tbody tr:nth-child(even) {
+                    background: rgba(20, 27, 65, 0.7);
+                }
+
+                .schedule-table tbody tr:nth-child(even):hover {
+                    background: rgba(20, 27, 65, 0.9);
+                }
+
+                .schedule-table td {
+                    padding: 14px 12px;
+                    color: #e2e8f0;
+                    border-right: 1px solid rgba(124, 58, 237, 0.1);
+                }
+
+                .schedule-table td:last-child {
+                    border-right: none;
+                }
+
+                .event-time {
+                    color: var(--highlight-color);
+                    font-weight: 600;
+                    font-size: 1rem;
+                    white-space: nowrap;
+                }
+
+                .event-name {
+                    color: white;
+                    font-weight: 600;
+                    font-size: 1rem;
+                }
+
+                .event-grade {
+                    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+                    color: white;
+                    padding: 4px 10px;
+                    border-radius: 20px;
+                    font-weight: 600;
+                    font-size: 0.85rem;
+                    display: inline-block;
+                }
+
+                /* Green Room Table */
+                .greenroom-table-wrapper {
+                    overflow-x: auto;
+                    max-height: 600px;
+                    overflow-y: auto;
+                }
+
+                .greenroom-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+
+                .greenroom-table thead {
+                    background: rgba(30, 27, 75, 0.9);
+                    position: sticky;
+                    top: 0;
+                    z-index: 10;
+                }
+
+                .greenroom-table th {
+                    color: white;
+                    padding: 15px 12px;
+                    text-align: left;
+                    font-weight: 600;
+                    font-size: 1rem;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    border-bottom: 2px solid var(--green-room-color);
+                }
+
+                .greenroom-table th i {
+                    margin-right: 8px;
+                    color: var(--green-room-color);
+                }
+
+                .greenroom-table tbody tr {
+                    background: rgba(15, 23, 42, 0.7);
+                    transition: all 0.3s;
+                    border-bottom: 1px solid rgba(34, 197, 94, 0.1);
+                }
+
+                .greenroom-table tbody tr:hover {
+                    background: rgba(30, 27, 75, 0.8);
+                }
+
+                .greenroom-table tbody tr.sector-header {
+                    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(21, 128, 61, 0.3));
+                    font-weight: 700;
+                    color: white;
+                    font-size: 1.1rem;
+                }
+
+                .greenroom-table tbody tr.sector-header:hover {
+                    background: linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(21, 128, 61, 0.4));
+                }
+
+                .greenroom-table td {
+                    padding: 14px 12px;
+                    color: #e2e8f0;
+                    border-right: 1px solid rgba(34, 197, 94, 0.1);
+                }
+
+                .greenroom-table td:first-child {
+                    font-weight: 600;
+                    color: var(--green-room-color);
+                }
+
+                .greenroom-table td:last-child {
+                    border-right: none;
+                }
+
+                /* Footer */
+                .main-footer {
+                    background: linear-gradient(135deg, #0f172a, #020617);
+                    color: white;
+                    padding: 4rem 0 2rem;
+                    border-top: 1px solid rgba(124, 58, 237, 0.3);
+                }
+
+                .footer-content {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 40px;
+                    margin-bottom: 3rem;
+                }
+
+                .footer-logo {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    margin-bottom: 20px;
+                }
+
+                .footer-logo-text h3 {
+                    font-size: 1.8rem;
+                    margin-bottom: 5px;
+                    background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent;
+                }
+
+                .footer-links h4, 
+                .footer-contact h4 {
+                    font-size: 1.4rem;
+                    margin-bottom: 25px;
+                    color: var(--accent-color);
+                    position: relative;
+                    padding-bottom: 10px;
+                }
+
+                .footer-links h4::after,
+                .footer-contact h4::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 50px;
+                    height: 3px;
+                    background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+                }
+
+                .footer-links ul {
+                    list-style: none;
+                }
+
+                .footer-links li {
+                    margin-bottom: 12px;
+                }
+
+                .footer-links a {
+                    color: #cbd5e1;
+                    text-decoration: none;
+                    transition: all 0.3s;
+                    display: inline-block;
+                }
+
+                .footer-links a:hover {
+                    color: var(--accent-color);
+                    transform: translateX(5px);
+                }
+
+                .footer-contact p {
+                    margin-bottom: 15px;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    color: #cbd5b8;
+                }
+
+                .social-icons {
+                    display: flex;
+                    gap: 15px;
+                    margin-top: 25px;
+                }
+
+                .social-icons a {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 45px;
+                    height: 45px;
+                    background: linear-gradient(135deg, var(--secondary-color), #4f46e5);
+                    border-radius: 50%;
+                    color: white;
+                    font-size: 1.2rem;
+                    transition: all 0.3s;
+                }
+
+                .social-icons a:hover {
+                    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+                    transform: translateY(-5px) scale(1.1);
+                    box-shadow: 0 10px 20px rgba(6, 182, 212, 0.4);
+                }
+
+                .copyright {
+                    text-align: center;
+                    padding-top: 2rem;
+                    border-top: 1px solid rgba(124, 58, 237, 0.2);
+                    color: #94a3b8;
+                    font-size: 0.9rem;
+                }
+
+                /* Responsive Design */
+                @media (max-width: 992px) {
+                    .header-content {
+                        flex-direction: column;
+                        gap: 20px;
+                    }
+
+                    .logo-section {
+                        min-width: 100%;
+                        justify-content: center;
+                        text-align: center;
+                    }
+
+                    .nav-menu {
+                        min-width: 100%;
+                        justify-content: center;
+                    }
+
+                    .nav-menu ul {
+                        justify-content: center;
+                    }
+
+                    .hero-content h2 {
+                        font-size: 2.8rem;
+                    }
+
+                    .live-now-container {
+                        margin: 2rem 0;
+                    }
+
+                    .music-controls {
+                        bottom: 20px;
+                        left: 20px;
+                    }
+
+                    .music-status {
+                        top: 80px;
+                        right: 20px;
+                    }
+                    
+                    .dual-container {
+                        flex-direction: column;
+                    }
+                    
+                    .schedule-container, .greenroom-container {
+                        min-width: 100%;
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .nav-menu ul {
+                        gap: 10px;
+                    }
+
+                    .nav-menu a {
+                        font-size: 0.9rem;
+                        padding: 6px 10px;
+                    }
+
+                    .hero-content h2 {
+                        font-size: 2.2rem;
+                    }
+
+                    .section {
+                        padding: 3.5rem 0;
+                    }
+
+                    .section-header h2 {
+                        font-size: 2.2rem;
+                    }
+
+                    .highlight-card .value {
+                        font-size: 2.2rem;
+                    }
+
+                    .houses-container {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .music-controls {
+                        padding: 12px;
+                    }
+
+                    .music-toggle-btn {
+                        width: 50px;
+                        height: 50px;
+                        font-size: 1.2rem;
+                    }
+
+                    .music-info {
+                        min-width: 150px;
+                        font-size: 0.8rem;
+                    }
+
+                    .music-status {
+                        max-width: 250px;
+                        padding: 10px 15px;
+                        font-size: 0.9rem;
+                    }
+                    
+                    .schedule-table th,
+                    .greenroom-table th {
+                        padding: 12px 10px;
+                        font-size: 0.9rem;
+                    }
+                    
+                    .schedule-table td,
+                    .greenroom-table td {
+                        padding: 12px 10px;
+                        font-size: 0.9rem;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .hero-content h2 {
+                        font-size: 1.8rem;
+                    }
+
+                    .section-header h2 {
+                        font-size: 1.8rem;
+                    }
+
+                    .live-now-badge {
+                        padding: 10px 20px;
+                        font-size: 1rem;
+                    }
+
+                    .house-item {
+                        padding: 1.2rem;
+                    }
+
+                    .house-name {
+                        font-size: 1.2rem;
+                    }
+
+                    .house-color {
+                        width: 28px;
+                        height: 28px;
+                        margin-right: 15px;
+                    }
+
+                    .event-detail-item {
+                        min-width: 100px;
+                    }
+
+                    .music-controls {
+                        bottom: 15px;
+                        left: 15px;
+                        padding: 10px;
+                        flex-direction: column;
+                        align-items: center;
+                        text-align: center;
+                    }
+
+                    .music-toggle-btn {
+                        width: 45px;
+                        height: 45px;
+                        font-size: 1rem;
+                    }
+
+                    .music-info {
+                        min-width: 120px;
+                        font-size: 0.8rem;
+                    }
+
+                    .volume-slider {
+                        width: 80px;
+                    }
+
+                    .music-status {
+                        max-width: 200px;
+                        padding: 8px 12px;
+                        font-size: 0.8rem;
+                    }
+                    
+                    .schedule-header h3,
+                    .greenroom-header h3 {
+                        font-size: 1.5rem;
+                    }
+                    
+                    .schedule-table th,
+                    .greenroom-table th {
+                        font-size: 0.8rem;
+                        padding: 10px 8px;
+                    }
+                    
+                    .schedule-table td,
+                    .greenroom-table td {
+                        padding: 10px 8px;
+                        font-size: 0.8rem;
+                    }
+                    
+                    .event-grade {
+                        padding: 3px 6px;
+                        font-size: 0.75rem;
+                    }
+                }
+
+                /* Custom Scrollbar */
+                ::-webkit-scrollbar {
+                    width: 8px;
+                }
+
+                ::-webkit-scrollbar-track {
+                    background: #0f172a;
+                }
+
+                ::-webkit-scrollbar-thumb {
+                    background: linear-gradient(to bottom, var(--accent-color), var(--secondary-color));
+                    border-radius: 5px;
+                }
+
+                ::-webkit-scrollbar-thumb:hover {
+                    background: linear-gradient(to bottom, var(--secondary-color), var(--accent-color));
+                }
+
+                /* Space Travel Gallery Section */
+                .gallery-section {
+                    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.9));
+                    min-height: 100vh;
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                    overflow: hidden;
+                    padding: 5rem 0;
+                }
+
+                #spaceCanvas {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 500;
+                    opacity: 0;
+                    transition: opacity 1s;
+                    pointer-events: none;
+                }
+
+                #spaceCanvas.visible {
+                    opacity: 1;
+                }
+
+                .gallery-container {
+                    width: 100%;
+                    position: relative;
+                    z-index: 2;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .gallery-header {
+                    text-align: center;
+                    margin-bottom: 40px;
+                }
+
+                .gallery-header h2 {
+                    font-size: 2.8rem;
+                    margin-bottom: 15px;
+                    position: relative;
+                    display: inline-block;
+                    padding-bottom: 15px;
+                }
+
+                .gallery-header h2::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 100px;
+                    height: 4px;
+                    background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+                    border-radius: 2px;
+                    animation: lineExpand 2s ease-in-out infinite;
+                }
+
+                .trigger-button {
+                    background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+                    color: white;
+                    border: none;
+                    padding: 18px 40px;
+                    font-size: 1.4rem;
+                    border-radius: 50px;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    margin: 30px 0;
+                    letter-spacing: 1px;
+                    font-weight: bold;
+                    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+                    position: relative;
+                    overflow: hidden;
+                    z-index: 10;
+                }
+
+                .trigger-button:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 8px 20px rgba(67, 97, 238, 0.6);
+                }
+
+                .trigger-button:active {
+                    transform: scale(0.98);
+                }
+
+                .trigger-button:disabled {
+                    opacity: 0.7;
+                    cursor: not-allowed;
+                }
+
+                .animation-status {
+                    margin-top: 20px;
+                    color: var(--accent-color);
+                    font-size: 1.2rem;
+                    text-align: center;
+                    min-height: 30px;
+                    transition: color 0.3s;
+                }
+
+                .gallery-grid {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 20px;
+                    width: 100%;
+                    max-width: 1400px;
+                    margin-top: 30px;
+                    opacity: 1;
+                    transition: opacity 0.5s;
+                }
+
+                .gallery-grid.hidden {
+                    opacity: 0;
+                    pointer-events: none;
+                }
+
+                .image-card {
+                    background: linear-gradient(145deg, rgba(30, 27, 75, 0.7), rgba(15, 23, 42, 0.9));
+                    border-radius: 10px;
+                    overflow: hidden;
+                    border: 1px solid rgba(100, 150, 255, 0.2);
+                    transition: transform 0.3s, box-shadow 0.3s;
+                    height: 250px;
+                    display: flex;
+                    flex-direction: column;
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+
+                .image-card:hover {
+                    transform: translateY(-10px) translateX(0);
+                    box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
+                }
+
+                .card-image {
+                    height: 80%;
+                    background-color: #1a1a2e;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                }
+
+                .card-title {
+                    padding: 15px;
+                    text-align: center;
+                    background: rgba(10, 15, 40, 0.8);
+                    height: 20%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #e2e8f0;
+                    font-weight: 600;
+                    transition: background 0.3s;
+                }
+
+                .gallery-instructions {
+                    text-align: center;
+                    margin-top: 40px;
+                    color: #94a3b8;
+                    font-size: 1.1rem;
+                    max-width: 800px;
+                    background: rgba(15, 23, 42, 0.5);
+                    padding: 20px;
+                    border-radius: var(--border-radius);
+                    border: 1px solid rgba(124, 58, 237, 0.2);
+                }
+
+                /* Gallery responsiveness */
+                @media (max-width: 1100px) {
+                    .gallery-grid {
+                        grid-template-columns: repeat(3, 1fr);
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .gallery-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+
+                    .gallery-header h2 {
+                        font-size: 2.2rem;
+                    }
+
+                    .image-card {
+                        height: 200px;
+                    }
+
+                    .trigger-button {
+                        padding: 15px 30px;
+                        font-size: 1.2rem;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .gallery-grid {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .gallery-header h2 {
+                        font-size: 1.8rem;
+                    }
+                }
+
+                /* Space Animation Image Container */
+                .space-image-container {
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) scale(0.8);
+                    z-index: 600;
+                    opacity: 0;
+                    transition: opacity 0.8s ease, transform 0.8s ease;
+                    pointer-events: none;
+                }
+
+                .space-image-container.visible {
+                    opacity: 1;
+                    transform: translate(-50%, -50%) scale(1);
+                }
+
+                .space-image-container.fading {
+                    opacity: 0;
+                    transform: translate(-50%, -50%) scale(1.1);
+                }
+
+                .space-image {
+                    width: 600px;
+                    height: 400px;
+                    border-radius: 20px;
+                    overflow: hidden;
+                    box-shadow: 0 0 50px rgba(6, 182, 212, 0.5);
+                    border: 3px solid var(--accent-color);
+                    background: linear-gradient(145deg, rgba(30, 27, 75, 0.9), rgba(15, 23, 42, 0.95));
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+                }
+
+                .space-image-content {
+                    height: 85%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 30px;
+                    position: relative;
+                }
+
+                .space-image-content img {
+                    max-width: 100%;
+                    max-height: 100%;
+                    width: auto;
+                    height: auto;
+                    display: block;
+                    object-fit: cover;
+                    border-radius: 10px;
+                }
+
+                .space-image-icon {
+                    font-size: 8rem;
+                    margin-bottom: 20px;
+                    animation: floatGallery 4s ease-in-out infinite;
+                }
+
+                .space-image-icon.reduced-bob {
+                    animation: floatSmall 6s ease-in-out infinite;
+                }
+
+                .space-image-icon.stronger-bob {
+                    animation: floatStronger 4s ease-in-out infinite;
+                }
+
+                .space-image-icon.no-bob {
+                    animation: none !important;
+                }
+
+                .space-image-icon.no-bob img {
+                    object-fit: contain !important;
+                    max-width: 100%;
+                    max-height: 100%;
+                    display: block;
+                }
+
+                .space-image-icon.fill-image img {
+                    width: 100% !important;
+                    height: 100% !important;
+                    object-fit: cover !important;
+                    display: block;
+                }
+
+                .space-image-icon.large-image img {
+                    width: 115% !important;
+                    height: 115% !important;
+                    object-fit: cover !important;
+                    display: block;
+                    transform: translateY(-5%);
+                }
+
+                @keyframes floatSmall {
+                    0%, 100% { transform: translateY(0px) translateX(0px); }
+                    25% { transform: translateY(-4px) translateX(2px); }
+                    50% { transform: translateY(2px) translateX(-2px); }
+                    75% { transform: translateY(-2px) translateX(-1px); }
+                }
+
+                @keyframes floatGallery {
+                    0%, 100% { transform: translateY(0px) translateX(0px); }
+                    25% { transform: translateY(-10px) translateX(4px); }
+                    50% { transform: translateY(6px) translateX(-4px); }
+                    75% { transform: translateY(-6px) translateX(-2px); }
+                }
+
+                @keyframes floatStronger {
+                    0%, 100% { transform: translateY(0px) translateX(0px); }
+                    25% { transform: translateY(-15px) translateX(6px); }
+                    50% { transform: translateY(10px) translateX(-6px); }
+                    75% { transform: translateY(-8px) translateX(-3px); }
+                }
+
+                .space-image-title {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    background: rgba(10, 15, 40, 0.9);
+                    padding: 20px;
+                    text-align: center;
+                    font-size: 1.8rem;
+                    font-weight: bold;
+                    color: white;
+                    border-top: 2px solid var(--accent-color);
+                }
+
+                .space-image-number {
+                    position: absolute;
+                    top: 20px;
+                    right: 20px;
+                    background: var(--accent-color);
+                    color: white;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    font-size: 1.2rem;
+                    box-shadow: 0 0 15px rgba(6, 182, 212, 0.7);
+                }
+
+                @media (max-width: 768px) {
+                    .space-image {
+                        width: 90vw;
+                        height: 300px;
+                    }
+                    
+                    .space-image-icon {
+                        font-size: 5rem;
+                    }
+                    
+                    .space-image-title {
+                        font-size: 1.4rem;
+                        padding: 15px;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <!-- Music Status Messages -->
+            <div class="music-status" id="musicStatus"></div>
+
+            <!-- Music Controls -->
+            <div class="music-controls">
+                <button id="musicToggleBtn" class="music-toggle-btn" title="Play/Pause Music">
+                    <i class="fas fa-play"></i>
+                </button>
+                <div class="music-info">
+                    <div style="font-weight: bold; margin-bottom: 5px;">🎵 Sports Day Anthem</div>
+                    <div class="volume-control">
+                        <i class="fas fa-volume-up"></i>
+                        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.1" value="0.7" title="Volume Control">
+                        <i class="fas fa-volume-up"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audio Elements -->
+            <audio id="background-music" preload="auto">
+                <source src="the-lost-soul-down-x-lost-soul (2).mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            
+
+            <!-- Space Animation Image Container -->
+            <div class="space-image-container" id="spaceImageContainer">
+                <div class="space-image">
+                    <div class="space-image-content" id="spaceImageContent">
+                        <!-- Image will be inserted here by JavaScript -->
+                    </div>
+                    <div class="space-image-title" id="spaceImageTitle"></div>
+                    <div class="space-image-number" id="spaceImageNumber"></div>
+                </div>
+            </div>
+
+            <!-- Header Section -->
+            <header class="main-header">
+                <div class="container header-content">
+                    <div class="logo-section">
+                        <!-- Logo Image -->
+                        <div class="logo-placeholder">
+                            <img src="ignit.png" alt="Aravali International School" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;">
+                        </div>
+                        <div class="logo-text">
+                            <h1>ARAVALI INTERNATIONAL SCHOOL</h1>
+                            <p>IGNITE Sports & Cultural Day 2026</p>
+                        </div>
+                    </div>
+                    
+                    <nav class="nav-menu">
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#highlights">Highlights</a></li>
+                            <li><a href="#events">Events</a></li>
+                            <li><a href="#houses">Houses</a></li>
+                            <li><a href="#schedule">Schedule & Green Room</a></li>
+                            <li><a href="#gallery">Gallery</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+
+            <!-- Hero Section -->
+            <section class="hero-section" id="home">
+                <div class="container hero-content">
+                    <h2>ARAVALI INTERNATIONAL SCHOOL IGNITE SPORTS & CULTURAL DAY 2026</h2>
+                    <p>Celebrating 26 years of excellence in sports and culture! Our school's premier event showcasing emerging talent from all houses in both athletic competitions and cultural performances.</p>
+
+                    <div class="live-now-container">
+                        <div class="live-now-badge">
+                            <div class="blink-dot"></div>
+                            <span>LIVE NOW - EVENTS IN PROGRESS</span>
+                        </div>
+
+                        <!-- Event Statistics with CONSTANT VALUES - COMPETING HOUSES REMOVED -->
+                        <div class="current-event-stats">
+                            <h3>EVENT STATISTICS</h3>
+                            <div class="current-time" id="currentTime"></div>
+                            <p>Senior Boys 4x100m Relay Finals & Cultural Dance Competition - Both events happening simultaneously!</p>
+                            
+                            <div class="event-details">
+                                <div class="event-detail-item">
+                                    <div class="event-detail-value">8</div>
+                                    <div class="event-detail-label">Events Live</div>
+                                </div>
+                                <div class="event-detail-item">
+                                    <div class="event-detail-value">0</div>
+                                    <div class="event-detail-label">Awards Given</div>
+                                </div>  
+                                <div class="event-detail-item">
+                                    <div class="event-detail-value">4</div>
+                                    <div class="event-detail-label">Competing Houses</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="color: #94a3b8; margin-top: 2rem; font-size: 1.1rem;">
+                        <i class="fas fa-map-marker-alt" style="color: var(--accent-color); margin-right: 10px;"></i>
+                        Aravali International School Sector-85, Faridabad | January 31, 2026
+                    </p>
+                </div>
+            </section>
+
+            <!-- Highlights Section -->
+            <section class="section highlights-section" id="highlights">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Event Highlights</h2>
+                    </div>
+                    <div class="highlights-container">
+                        <div class="highlight-card">
+                            <i class="fas fa-star"></i>
+                            <h3>Sports Event of the Day</h3>
+                            <div class="value">4x100m Relay</div>
+                            <div class="description">Most anticipated event with record-breaking performances</div>
+                        </div>
+
+                        <div class="highlight-card">
+                            <i class="fas fa-music"></i>
+                            <h3>Cultural Highlight</h3>
+                            <div class="value">Folk Dance</div>
+                            <div class="description">Traditional dance performances with vibrant costumes</div>
+                        </div>
+
+                        <div class="highlight-card">
+                            <i class="fas fa-users"></i>
+                            <h3>Total Participation</h3>
+                            <div class="value">4 Houses</div>
+                            <div class="description">All houses competing with exceptional spirit</div>
+                        </div>
+
+                        <div class="highlight-card">
+                            <i class="fas fa-trophy"></i>
+                            <h3>Total Events</h3>
+                            <div class="value">8</div>
+                            <div class="description">Sports & Cultural events in progress</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Events Section -->
+            <section class="section events-section" id="events">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Sports & Cultural Events</h2>
+                    </div>
+
+                    <!-- Sports Spirit Events -->
+                    <div class="spirit-category sports-spirit">
+                        <div class="category-header">
+                            <h3>Sports Spirit</h3>
+                        </div>
+                        <div class="events-container">
+                            <div class="event-card">
+                                <div class="event-icon">
+                                    <i class="fas fa-running"></i>
+                                </div>
+                                <h3>100m Race</h3>
+                                <p>Track Event</p>
+                                <p>Fastest athletes competition</p>
+                                <p>Main Track Stadium</p>
+                            </div>
+
+                            <div class="event-card">
+                                <div class="event-icon">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </div>
+                                <h3>200m Race</h3>
+                                <p>Track Event</p>
+                                <p>Speed & endurance test</p>
+                                <p>Main Track Stadium</p>
+                            </div>
+
+                            <div class="event-card">
+                                <div class="event-icon">
+                                    <i class="fas fa-road"></i>
+                                </div>
+                                <h3>400m Race</h3>
+                                <p>Track Event</p>
+                                <p>One lap full sprint</p>
+                                <p>Main Track Stadium</p>
+                            </div>
+
+                            <div class="event-card">
+                                <div class="event-icon">
+                                    <i class="fas fa-weight-hanging"></i>
+                                </div>
+                                <h3>Shot Put</h3>
+                                <p>Field Event</p>
+                                <p>Strength & technique</p>
+                                <p>Field Arena 1</p>
+                            </div>
+
+                            <div class="event-card">
+                                <div class="event-icon">
+                                    <i class="fas fa-compact-disc"></i>
+                                </div>
+                                <h3>Discus</h3>
+                                <p>Field Event</p>
+                                <p>Power & precision throw</p>
+                                <p>Field Arena 2</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cultural Spirit Events -->
+                    <div class="spirit-category cultural-spirit">
+                        <div class="category-header">
+                            <h3>Cultural Spirit</h3>
+                        </div>
+                        <div class="events-container">
+                            <div class="event-card">
+                                <div class="event-icon">
+                                    <i class="fas fa-music"></i>
+                                </div>
+                                <h3>Music</h3>
+                                <p>Vocal & Instrumental</p>
+                                <p>Classical & contemporary performances</p>
+                                <p>Cultural Hall</p>
+                            </div>
+
+                            <div class="event-card">
+                                <div class="event-icon">
+                                    <i class="fas fa-dragon"></i>
+                                </div>
+                                <h3>Dance</h3>
+                                <p>Group & Solo</p>
+                                <p>Traditional & fusion dance forms</p>
+                                <p>Main Auditorium</p>
+                            </div>
+
+                            <div class="event-card">
+                                <div class="event-icon">
+                                    <i class="fas fa-palette"></i>
+                                </div>
+                                <h3>Arts</h3>
+                                <p>Visual Arts</p>
+                                <p>Painting, sculpture & crafts exhibition</p>
+                                <p>Art Gallery</p>
+                            </div>
+
+                            <div class="event-card">
+                                <div class="event-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <h3>Culinary</h3>
+                                <p>Food & Nutrition</p>
+                                <p>Fire free cooking</p>
+                                <p>Culinary Tent</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+
+            <!-- Houses Section -->
+            <section class="section houses-section" id="houses">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>School Houses</h2>
+                    </div>
+                    <div class="houses-container">
+                        <div class="houses-card">
+                            <h3>Competing Houses</h3>
+                            <div class="house-item ruby-house">
+                                <div class="house-color"></div>
+                                <div class="house-name">Ruby House</div>
+                            </div>
+                            <div class="house-item sapphire-house">
+                                <div class="house-color"></div>
+                                <div class="house-name">Sapphire House</div>
+                            </div>
+                            <div class="house-item emerald-house">
+                                <div class="house-color"></div>
+                                <div class="house-name">Emerald House</div>
+                            </div>
+                            <div class="house-item topaz-house">
+                                <div class="house-color"></div>
+                                <div class="house-name">Topaz House</div>
+                            </div>
+                        </div>
+
+                        <div class="houses-card">
+                            <h3>House Motto</h3>
+                            <div class="house-item ruby-house">
+                                <div class="house-color"></div>
+                                <div class="house-name">Ruby House: "Strength & Passion"</div>
+                            </div>
+                            <div class="house-item sapphire-house">
+                                <div class="house-color"></div>
+                                <div class="house-name">Sapphire House: "Wisdom & Excellence"</div>
+                            </div>
+                            <div class="house-item emerald-house">
+                                <div class="house-color"></div>
+                                <div class="house-name">Emerald House: "Growth & Harmony"</div>
+                            </div>
+                            <div class="house-item topaz-house">
+                                <div class="house-color"></div>
+                                <div class="house-name">Topaz House: "Energy & Leadership"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Schedule & Green Room Section -->
+            <section class="section schedule-greenroom-section" id="schedule">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Schedule & Green Room Allocation</h2>
+                        <p style="color: #cbd5e1; font-size: 1.2rem; margin-top: 15px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                            Detailed timeline of all sports and cultural events along with Green Room allocations for participants.
+                        </p>
+                    </div>
+                    
+                    <div class="dual-container">
+                        <!-- Schedule Table Container -->
+                        <div class="schedule-container">
+                            <div class="schedule-header">
+                                <h3><i class="far fa-calendar-alt"></i> Event Schedule</h3>
+                                <p>January 31, 2026 | All events at Aravali International School</p>
+                            </div>
+                            <div class="schedule-table-wrapper">
+                                <table class="schedule-table">
+                                    <thead>
+                                        <tr>
+                                            <th><i class="far fa-clock"></i> Time</th>
+                                            <th><i class="fas fa-running"></i> Event Name</th>
+                                            <th><i class="fas fa-user-graduate"></i> Grade</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="event-time">7:40 - 8:20</td>
+                                            <td class="event-name">400m Race</td>
+                                            <td><span class="event-grade">Grade 6-12</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">8:20 - 8:50</td>
+                                            <td class="event-name">200m Race</td>
+                                            <td><span class="event-grade">Grade 6-12</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">8:50 - 9:00</td>
+                                            <td class="event-name">Sack Race</td>
+                                            <td><span class="event-grade">Grade 3</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">9:00 - 9:10</td>
+                                            <td class="event-name">81 Drill</td>
+                                            <td><span class="event-grade">Grade 2</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">9:10 - 9:20</td>
+                                            <td class="event-name">Lemon Race</td>
+                                            <td><span class="event-grade">Grade 3</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">9:20 - 9:40</td>
+                                            <td class="event-name">3 Leg Race</td>
+                                            <td><span class="event-grade">Grade 4-5</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">9:40 - 10:00</td>
+                                            <td class="event-name">81 Drill</td>
+                                            <td><span class="event-grade">Grade 2</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">10:00 - 10:30</td>
+                                            <td class="event-name">Relay Race</td>
+                                            <td><span class="event-grade">Grade 6-8, 4-5</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">10:30 - 10:45</td>
+                                            <td class="event-name">Chief Guest Arrival</td>
+                                            <td><span class="event-grade">All</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">10:45 - 10:55</td>
+                                            <td class="event-name">March Past & National Anthem</td>
+                                            <td><span class="event-grade">All Houses</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">10:55 - 11:20</td>
+                                            <td class="event-name">Oath Ceremony, Torch Lighting</td>
+                                            <td><span class="event-grade">All</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">11:30 - 11:45</td>
+                                            <td class="event-name">Dance Performance</td>
+                                            <td><span class="event-grade">Grade 6-8</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">11:45 - 12:15</td>
+                                            <td class="event-name">100m Race</td>
+                                            <td><span class="event-grade">Grade 4-12</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">12:15 - 12:20</td>
+                                            <td class="event-name">Song Performance</td>
+                                            <td><span class="event-grade">Cultural Team</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">12:20 - 12:30</td>
+                                            <td class="event-name">Dance Performance</td>
+                                            <td><span class="event-grade">Grade 3-5</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">12:30 - 12:45</td>
+                                            <td class="event-name">81 Drill</td>
+                                            <td><span class="event-grade">Prep 2</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">12:45 - 1:05</td>
+                                            <td class="event-name">50m Race</td>
+                                            <td><span class="event-grade">Grade 3-5</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">1:05 - 1:40</td>
+                                            <td class="event-name">Medal Distribution</td>
+                                            <td><span class="event-grade">Winners</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">1:40 - 1:55</td>
+                                            <td class="event-name">81 Drill</td>
+                                            <td><span class="event-grade">Prep 1</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">1:55 - 2:05</td>
+                                            <td class="event-name">Obstacle Race</td>
+                                            <td><span class="event-grade">All Grades</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">2:05 - 2:15</td>
+                                            <td class="event-name">81 Drill</td>
+                                            <td><span class="event-grade">Grade 1</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">2:15 - 2:30</td>
+                                            <td class="event-name">Song Performance</td>
+                                            <td><span class="event-grade">Cultural Team</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">2:30 - 2:45</td>
+                                            <td class="event-name">Hurdles Race</td>
+                                            <td><span class="event-grade">Grade 4-5</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">2:45 - 3:15</td>
+                                            <td class="event-name">Relay Race</td>
+                                            <td><span class="event-grade">Grade 9-12</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">3:15 - 3:30</td>
+                                            <td class="event-name">81 Drill</td>
+                                            <td><span class="event-grade">Nur - Pre Nur</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">3:30 - 4:00</td>
+                                            <td class="event-name">Medal Distribution</td>
+                                            <td><span class="event-grade">All Winners</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event-time">4:00</td>
+                                            <td class="event-name">Vote of Thanks</td>
+                                            <td><span class="event-grade">All</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Green Room Table Container -->
+                        <div class="greenroom-container">
+                            <div class="greenroom-header">
+                                <h3><i class="fas fa-door-closed"></i> Green Room Allocation</h3>
+                                <p>Participant preparation rooms for Sector 85 & 81</p>
+                            </div>
+                            <div class="greenroom-table-wrapper">
+                                <table class="greenroom-table">
+                                    <thead>
+                                        <tr>
+                                            <th><i class="fas fa-hashtag"></i> S.NO</th>
+                                            <th><i class="fas fa-list-alt"></i> ITEM</th>
+                                            <th><i class="fas fa-door-open"></i> GREEN ROOM</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Sector 85 -->
+                                        <tr class="sector-header">
+                                            <td colspan="3">SECTOR-85</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>SPORTS (3-5)</td>
+                                            <td>7A, 7B, 7C</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>SPORTS (6-8)</td>
+                                            <td>7D, 7E, 8A</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>SPORTS (9-12)</td>
+                                            <td>8B, 8C</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>MUSIC (SEC 85)</td>
+                                            <td>LIBRARY</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>DANCE 1 (SEC 85)</td>
+                                            <td>10A & 10B</td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>DANCE 2 (SEC 85)</td>
+                                            <td>10C & 10D</td>
+                                        </tr>
+                                        
+                                        <!-- Sector 81 -->
+                                        <tr class="sector-header">
+                                            <td colspan="3">SECTOR-81</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>SPORTS (SEC-81)</td>
+                                            <td>AUDITORIUM</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>DANCE 1 (SEC 81)</td>
+                                            <td>AUDITORIUM</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>DANCE 2 (SEC 81)</td>
+                                            <td>AUDITORIUM</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>DANCE 3 (SEC 81)</td>
+                                            <td>AUDITORIUM</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>DANCE 4 (SEC 81)</td>
+                                            <td>AUDITORIUM</td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>DANCE 5 (SEC 81)</td>
+                                            <td>AUDITORIUM</td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>DANCE 6 (SEC 81)</td>
+                                            <td>AUDITORIUM</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="schedule-notice" style="margin-top: 30px;">
+                        <i class="fas fa-calendar-check"></i>
+                        Note: Schedule is subject to change based on weather conditions and event progress. Green Rooms are allocated for participant preparation.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Space Travel Gallery Section -->
+            <section class="section gallery-section" id="gallery">
+                <canvas id="spaceCanvas"></canvas>
+                <div class="container gallery-container">
+                    <div class="gallery-header">
+                        <h2>Space Travel Gallery</h2>
+                        <p style="color: #cbd5e1; font-size: 1.2rem; margin-top: 15px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                            Experience an interstellar journey through our sports and cultural events captured from a cosmic perspective.
+                        </p>
+                    </div>
+                    
+                    <button id="spaceTravelBtn" class="trigger-button">
+                        🚀 Launch Space Travel Gallery
+                    </button>
+                    
+                    <div class="animation-status" id="spaceStatus">
+                        Ready for cosmic journey...
+                    </div>
+                    
+                    <div class="gallery-grid" id="spaceImageGallery">
+                        <!-- Images will be inserted here by JavaScript -->
+                    </div>
+                    
+                    <div class="gallery-instructions">
+                        <p><i class="fas fa-info-circle" style="color: var(--accent-color); margin-right: 10px;"></i>
+                        Click the launch button to start the animation. You'll travel through space at warp speed with images appearing every 2 seconds.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="main-footer">
+                <div class="container">
+                    <div class="footer-content">
+                        <div class="footer-about">
+                            <div class="footer-logo">
+                                <div class="logo-placeholder" style="width: 70px; height: 70px;">
+                                    <img src="ignit.png" alt="Aravali International School" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;">
+                                </div>
+                                <div class="footer-logo-text">
+                                    <h3>ARAVALI INTERNATIONAL SCHOOL</h3>
+                                    <p>IGNITE Sports & Cultural Day 2026</p>
+                                </div>
+                            </div>
+                            <p style="color: #cbd5e1; line-height: 1.8;">Aravali International School, established in 2000, is committed to holistic education and excellence in both sports and culture.</p>
+                            <div class="social-icons">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="footer-links">
+                            <h4>Quick Links</h4>
+                            <ul>
+                                <li><a href="#home">Home</a></li>
+                                <li><a href="#highlights">Highlights</a></li>
+                                <li><a href="#events">Events</a></li>
+                                <li><a href="#houses">Houses</a></li>
+                                <li><a href="#schedule">Schedule & Green Room</a></li>
+                                <li><a href="#gallery">Gallery</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-contact">
+                            <h4>Contact Information</h4>
+                            <p><i class="fas fa-map-marker-alt" style="color: var(--accent-color);"></i> Aravali International School, Sector-85, Faridabad</p>
+                            <p><i class="fas fa-phone" style="color: var(--accent-color);"></i> +91 088820 35202</p>
+                            <p><i class="fas fa-envelope" style="color: var(--accent-color);"></i> sportsday@aravalischool.edu.in</p>
+                            <p><i class="far fa-calendar-alt" style="color: var(--accent-color);"></i> January 31, 2026</p>
+                        </div>
+                    </div>
+
+                    <div class="copyright">
+                        <p>&copy; 2026 Aravali International School IGNITE Sports & Cultural Day. All Rights Reserved.</p>
+                        <p style="margin-top: 10px; font-size: 0.8rem;">Celebrating 25 Years of Excellence in Education, Sports & Culture</p>
+                    </div>
+                </div>
+            </footer>
+
+            <script>
+                // ============================================
+                // SIMPLIFIED GUARANTEED MUSIC PLAYER
+                // ============================================
+
+                // DOM Elements for music
+                const backgroundMusic = document.getElementById('background-music') || new Audio();
+                const musicToggleBtn = document.getElementById('musicToggleBtn') || document.createElement('button');
+                const volumeSlider = document.getElementById('volumeSlider') || document.createElement('input');
+                const musicStatus = document.getElementById('musicStatus') || document.createElement('div');
+                const spaceAudio = document.getElementById('space-audio') || new Audio();
+
+                // State variables
+                let isMusicPlaying = false;
+                let audioContextInitialized = false;
+
+                // Initialize music on page load
+                function initializeMusic() {
+                    console.log("Initializing music player...");
+                    
+                    // Configure audio settings
+                    backgroundMusic.volume = 0.7; // Default volume
+                    backgroundMusic.loop = true; // Loop for 5 hours
+                    backgroundMusic.currentTime = 0; // Start from beginning
+                    
+                    spaceAudio.volume = 0.7;
+                    spaceAudio.loop = true;
+                    spaceAudio.currentTime = 16;
+                    
+                    // Setup event listeners
+                    setupMusicListeners();
+                    
+                    // Show initial instruction
+                    showMusicStatus("Click the play button to start music", "info");
+                    
+                    // Listen for ANY user interaction
+                    document.addEventListener('click', handleFirstInteraction);
+                    document.addEventListener('touchstart', handleFirstInteraction);
+                    document.addEventListener('keydown', handleFirstInteraction);
+                }
+
+                // Handle first user interaction
+                function handleFirstInteraction() {
+                    console.log("User interacted with page");
+                    audioContextInitialized = true;
+                    
+                    // Remove event listeners
+                    document.removeEventListener('click', handleFirstInteraction);
+                    document.removeEventListener('touchstart', handleFirstInteraction);
+                    document.removeEventListener('keydown', handleFirstInteraction);
+                    
+                    // Try to auto-play
+                    tryAutoPlay();
+                }
+
+                // Try to auto-play music
+                function tryAutoPlay() {
+                    if (!audioContextInitialized) return;
+                    
+                    backgroundMusic.play().then(() => {
+                        console.log("Music auto-played successfully");
+                        isMusicPlaying = true;
+                        updateMusicButton();
+                        showMusicStatus("Music started!", "success");
+                    }).catch(error => {
+                        console.log("Auto-play failed (normal):", error.message);
+                        showMusicStatus("Click play button to start music", "info");
+                    });
+                }
+
+                // Setup music event listeners
+                function setupMusicListeners() {
+                    // Play/Pause button
+                    if (musicToggleBtn && musicToggleBtn.addEventListener) {
+                        musicToggleBtn.addEventListener('click', toggleMusic);
+                    }
+                    
+                    // Volume control
+                    if (volumeSlider && volumeSlider.addEventListener) {
+                        volumeSlider.addEventListener('input', (e) => {
+                            const volume = parseFloat(e.target.value);
+                            if (backgroundMusic && backgroundMusic.volume !== undefined) {
+                                backgroundMusic.volume = volume;
+                            }
+                            if (spaceAudio && spaceAudio.volume !== undefined) {
+                                spaceAudio.volume = volume;
+                            }
+                            updateVolumeIcon();
+                        });
+                    }
+                    
+                    // Audio error handling
+                    if (backgroundMusic && backgroundMusic.addEventListener) {
+                        backgroundMusic.addEventListener('error', (e) => {
+                            console.error("Audio error:", e);
+                            showMusicStatus("Error: Could not load music file", "error");
+                        });
+                        
+                        backgroundMusic.addEventListener('canplaythrough', () => {
+                            console.log("Audio is ready to play");
+                            showMusicStatus("Music loaded and ready", "info");
+                        });
+                    }
+                }
+
+                // Toggle music play/pause
+                function toggleMusic() {
+                    if (!audioContextInitialized) {
+                        audioContextInitialized = true;
+                        showMusicStatus("Starting music...", "info");
+                    }
+                    
+                    if (isMusicPlaying) {
+                        pauseMusic();
+                    } else {
+                        playMusic();
+                    }
+                }
+
+                // Play music function
+                function playMusic() {
+                    if (!backgroundMusic) return;
+                    
+                    // Ensure we're at the beginning
+                    backgroundMusic.currentTime = 0;
+                    
+                    const playPromise = backgroundMusic.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            isMusicPlaying = true;
+                            updateMusicButton();
+                            console.log("Music started successfully");
+                            showMusicStatus("Music playing", "success");
+                        }).catch(error => {
+                            console.error("Play failed:", error);
+                            
+                            // Try alternative approach
+                            if (error.name === 'NotAllowedError') {
+                                showMusicStatus("Click anywhere on page, then play button", "error");
+                            } else if (error.name === 'NotSupportedError') {
+                                showMusicStatus("Browser doesn't support this audio format", "error");
+                            } else {
+                                showMusicStatus("Could not play audio", "error");
+                            }
+                            
+                            // Try one more time with a delay
+                            setTimeout(() => {
+                                backgroundMusic.play().then(() => {
+                                    isMusicPlaying = true;
+                                    updateMusicButton();
+                                    showMusicStatus("Music started!", "success");
+                                }).catch(e => {
+                                    console.error("Second attempt failed:", e);
+                                });
+                            }, 1000);
+                        });
+                    }
+                }
+
+                // Pause music
+                function pauseMusic() {
+                    if (!backgroundMusic) return;
+                    
+                    backgroundMusic.pause();
+                    isMusicPlaying = false;
+                    updateMusicButton();
+                    showMusicStatus("Music paused", "info");
+                }
+
+                // Update music button appearance
+                function updateMusicButton() {
+                    if (!musicToggleBtn || !musicToggleBtn.querySelector) return;
+                    
+                    const icon = musicToggleBtn.querySelector('i');
+                    
+                    if (isMusicPlaying) {
+                        musicToggleBtn.classList.add('playing');
+                        if (icon) icon.className = 'fas fa-pause';
+                    } else {
+                        musicToggleBtn.classList.remove('playing');
+                        if (icon) icon.className = 'fas fa-play';
+                    }
+                    
+                    updateVolumeIcon();
+                }
+
+                // Update volume icon
+                function updateVolumeIcon() {
+                    if (!backgroundMusic) return;
+                    
+                    const volume = backgroundMusic.volume;
+                    const volumeIcons = document.querySelectorAll('.volume-control i');
+                    
+                    if (volume === 0) {
+                        volumeIcons.forEach(icon => icon.className = 'fas fa-volume-mute');
+                    } else if (volume < 0.5) {
+                        volumeIcons.forEach(icon => icon.className = 'fas fa-volume-down');
+                    } else {
+                        volumeIcons.forEach(icon => icon.className = 'fas fa-volume-up');
+                    }
+                }
+
+                // Show music status message
+                function showMusicStatus(message, type) {
+                    if (!musicStatus) return;
+                    
+                    musicStatus.textContent = message;
+                    musicStatus.className = 'music-status';
+                    musicStatus.classList.add(type);
+                    musicStatus.style.display = 'block';
+                    
+                    // Hide after 5 seconds
+                    setTimeout(() => {
+                        if (musicStatus) musicStatus.style.display = 'none';
+                    }, 5000);
+                }
+
+                // Space travel audio functions
+                function startSpaceTravelAudio() {
+                    if (audioContextInitialized) {
+                        spaceAudio.currentTime = 16;
+                        spaceAudio.volume = 0.5;
+                        spaceAudio.play().catch(error => {
+                            console.log("Space audio play failed:", error);
+                        });
+                    }
+                }
+
+                function stopSpaceTravelAudio() {
+                    spaceAudio.pause();
+                    spaceAudio.currentTime = 16;
+                }
+
+                // ============================================
+                // SPACE TRAVEL GALLERY ANIMATION WITH IMAGES
+                // ============================================
+
+                // Space animation variables
+                let canvas, ctx;
+                let stars = [];
+                let animationId;
+                let isAnimating = false;
+                let warpSpeed = 15; // Constant warp speed
+                let imageIndex = 0;
+                let starCount = 800;
+                let lastTime = 0;
+                let isSpaceAudioPlaying = false;
+
+            
+                // Space-themed image data for the gallery - WITH IMG TAGS
+        const spaceImages = [
+            { 
+                id: 1, 
+                title: "Aravali International School", 
+                color: "#3a0ca3", 
+                icon: '<img src="aravali.webp"  Race" style="max-width:100%; max-height:100%; object-fit:cover; border-radius:10px; border:3px solid #3a0ca3;">',
+            
+            },
+            { 
+                id: 2, 
+                title: "high jump", 
+                color: "#4361ee", 
+                icon: '<img src="ball.JPG" style="max-width:100%; max-height:100%; object-fit:cover; border-radius:10px; border:3px solid #4361ee;">',
+                
+            },
+            { 
+                id: 3, 
+                title: "Guitar", 
+                color: "#4cc9f0", 
+                icon: '<img src="guitar.JPG"  style="max-width:100%; max-height:100%; object-fit:cover; border-radius:10px; border:3px solid #4cc9f0;">',
+            
+            },
+            { 
+                id: 4, 
+                title: "tug of war",
+                color: "#7209b7", 
+                icon: '<img src="tug.webp"  style="max-width:125%; max-height:200%; object-fit:cover; border-radius:10px; border:3px solid #7209b7;">',
+                
+            },
+            { 
+                id: 5, 
+                title: "Yoga", 
+                color: "#f72585", 
+                icon: '<img src="yoga.JPG"  style="max-width:100%; max-height:100%; object-fit:cover; border-radius:10px; border:3px solid #f72585;">',
+                
+            },
+            { 
+                id: 6, 
+                title: "Swimming", 
+                color: "#4895ef", 
+                icon: '<img src="swimming.JPG"  style="max-width:100%; max-height:100%; object-fit:cover; border-radius:10px; border:3px solid #4895ef;">',
+            
+            },
+            { 
+                id: 7, 
+                title: "Football", 
+                color: "#560bad", 
+                icon: '<img src="anant.JPG"  style="max-width:100%; max-height:100%; object-fit:cover; border-radius:10px; border:3px solid #560bad;">',
+            
+            },
+            { 
+                id: 8, 
+                title: "Sports Day Celebration", 
+                color: "#b5179e",   
+                icon: '<img src="image.png"  style="max-width:200%; max-height:100%; object-fit:cover; border-radius:10px; border:3px solid #b5179e;">',
+            }
+        ];
+
+                // Initialize the space travel gallery
+                function initSpaceGallery()     {
+                    console.log("Initializing space gallery...");
+                    
+                    // Initialize the starfield
+                    initStarfield();
+                    
+                    // Setup event listeners
+                    document.getElementById('spaceTravelBtn').addEventListener('click', startSpaceTravel);
+                    
+                    console.log("✓ Space gallery initialized");
+                }
+
+                // Initialize the starfield
+                function initStarfield() {
+                    canvas = document.getElementById('spaceCanvas');
+                    if (!canvas) return;
+                    
+                    ctx = canvas.getContext('2d');
+                    
+                    // Set canvas size
+                    resizeCanvas();
+                    window.addEventListener('resize', resizeCanvas);
+                    
+                    // Create stars
+                    stars = [];
+                    for (let i = 0; i < starCount; i++) {
+                        stars.push({
+                            x: (Math.random() - 0.5) * 2000,
+                            y: (Math.random() - 0.5) * 2000,
+                            z: Math.random() * 1500,
+                            size: Math.random() * 2 + 0.5,
+                            speed: Math.random() * 3 + 1,
+                            trailLength: Math.random() * 10 + 5
+                        });
+                    }
+                }
+
+                // Resize canvas to match window
+                function resizeCanvas() {
+                    if (!canvas) return;
+                    
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                }
+
+                // Draw the starfield with motion blur effect
+                function drawStarfield(timestamp) {
+                    if (!ctx || !canvas) return;
+                    
+                    if (!lastTime) lastTime = timestamp;
+                    const deltaTime = Math.min(timestamp - lastTime, 32);
+                    lastTime = timestamp;
+                    
+                    // Clear with a fade effect for motion blur
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
+                    // Constant speed factor
+                    const speedFactor = warpSpeed;
+                    
+                    const centerX = canvas.width / 2;
+                    const centerY = canvas.height / 2;
+                    
+                    // Draw motion blur lines for warp speed effect
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+                    for (let i = 0; i < 5; i++) {
+                        const x = Math.random() * canvas.width;
+                        const y = Math.random() * canvas.height;
+                        const length = warpSpeed * 10;
+                        const angle = Math.atan2(y - centerY, x - centerX);
+                        
+                        ctx.save();
+                        ctx.translate(x, y);
+                        ctx.rotate(angle);
+                        ctx.fillRect(-length/2, -1, length, 2);
+                        ctx.restore();
+                    }
+                    
+                    // Draw stars with stretching effect
+                    stars.forEach(star => {
+                        // Move star towards viewer
+                        star.z -= star.speed * speedFactor * (deltaTime / 16);
+                        
+                        // Reset star if it's too close or passed
+                        if (star.z <= 0.1) {
+                            star.z = 1500;
+                            star.x = (Math.random() - 0.5) * 2000;
+                            star.y = (Math.random() - 0.5) * 2000;
+                        }
+                        
+                        // Calculate star position with perspective
+                        const perspective = 500 / star.z;
+                        const x = centerX + star.x * perspective;
+                        const y = centerY + star.y * perspective;
+                        
+                        // Calculate star size with perspective
+                        const size = star.size * perspective;
+                        
+                        // Draw the star if it's within view
+                        if (x >= -50 && x <= canvas.width + 50 && y >= -50 && y <= canvas.height + 50) {
+                            ctx.fillStyle = 'white';
+                            
+                            // Create stretching effect for stars at warp speed
+                            const stretchFactor = 8;
+                            
+                            // Draw star trail
+                            ctx.save();
+                            ctx.translate(x, y);
+                            const angle = Math.atan2(star.y, star.x);
+                            ctx.rotate(angle);
+                            
+                            // Gradient for trail
+                            const gradient = ctx.createLinearGradient(0, -size/2, stretchFactor * size * 2, -size/2);
+                            gradient.addColorStop(0, 'rgba(255, 255, 255, 0.8)');
+                            gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.5)');
+                            gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                            
+                            ctx.fillStyle = gradient;
+                            ctx.fillRect(0, -size/2, stretchFactor * size * 2, size);
+                            ctx.restore();
+                            
+                            // Draw the main star
+                            ctx.beginPath();
+                            ctx.arc(x, y, size * 1.5, 0, Math.PI * 2);
+                            ctx.fillStyle = 'white';
+                            ctx.fill();
+                        }
+                    });
+                    
+                    // Continue animation
+                    if (isAnimating) {
+                        animationId = requestAnimationFrame(drawStarfield);
+                    }
+                }
+
+                // Show image in space animation
+                function showSpaceImage(imageIndex) {
+                    const spaceImageContainer = document.getElementById('spaceImageContainer');
+                    const spaceImageContent = document.getElementById('spaceImageContent');
+                    const spaceImageTitle = document.getElementById('spaceImageTitle');
+                    const spaceImageNumber = document.getElementById('spaceImageNumber');
+                    const spaceStatus = document.getElementById('spaceStatus');
+                    
+                    const image = spaceImages[imageIndex];
+                    
+                    // Set image content
+                    spaceImageContent.innerHTML = `
+                        <div style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:30px; background:${image.color}10;">
+                            <div class="space-image-icon">${image.icon}</div>
+                            <div style="text-align:center; margin-top:20px; color:#e2e8f0; font-size:1.2rem; max-width:500px;">
+                                ${image.description}
+                            </div>
+                        </div>
+                    `;
+                    
+                    spaceImageTitle.textContent = image.title;
+                    spaceImageNumber.textContent = image.id;
+                    spaceImageContainer.style.borderColor = image.color;
+
+                    // Reduce bobbing for non-first images
+                    try {
+                        const iconElem = spaceImageContent.querySelector('.space-image-icon');
+                        if (iconElem) {
+                            // First image: normal bob; Second image (index 1): stationary; Others: stronger bob
+                            if (imageIndex === 0) {
+                                iconElem.classList.remove('reduced-bob', 'no-bob', 'stronger-bob');
+                            } else if (imageIndex === 1) {
+                                iconElem.classList.remove('reduced-bob', 'stronger-bob');
+                                iconElem.classList.add('no-bob');
+                            } else {
+                                iconElem.classList.remove('no-bob', 'reduced-bob');
+                                iconElem.classList.add('stronger-bob');
+                            }
+
+                            // Enlarge only the 4th image (index 3)
+                            if (imageIndex === 3) {
+                                iconElem.classList.add('large-image');
+                            } else {
+                                iconElem.classList.remove('large-image');
+                            }
+                        }
+                    } catch (e) {
+                        console.warn('Could not toggle reduced-bob class:', e);
+                    }
+                    
+                            // Update status
+                    spaceStatus.textContent = `Viewing: ${image.title}`;
+                    spaceStatus.style.color = image.color;
+                            
+                            // If this image was previously converted to a background, adjust background-size for the 4th image
+                            try {
+                                const iconElem = spaceImageContent.querySelector('.space-image-icon');
+                                if (iconElem && iconElem.style && iconElem.style.backgroundImage) {
+                                    if (imageIndex === 3) {
+                                        iconElem.style.backgroundSize = '120%';
+                                        iconElem.style.backgroundPosition = 'center top';
+                                    } else {
+                                        iconElem.style.backgroundSize = '';
+                                        iconElem.style.backgroundPosition = '';
+                                    }
+                                }
+                            } catch (e) {
+                                // ignore
+                            }
+                    
+                    // Show the image with animation
+                    spaceImageContainer.classList.remove('fading');
+                    spaceImageContainer.classList.add('visible');
+                }
+
+                // Hide current image
+                function hideSpaceImage() {
+                    const spaceImageContainer = document.getElementById('spaceImageContainer');
+                    spaceImageContainer.classList.remove('visible');
+                    spaceImageContainer.classList.add('fading');
+                }
+
+                // Start the space travel animation
+                function startSpaceTravel() {
+                    if (isAnimating) return;
+                    
+                    console.log("Starting space travel animation...");
+                    
+                    // Reset state
+                    isAnimating = true;
+                    imageIndex = 0;
+                    lastTime = 0;
+                    
+                    // Show the canvas
+                    canvas.classList.add('visible');
+                    
+                    // Hide the gallery grid initially
+                    document.getElementById('spaceImageGallery').classList.add('hidden');
+                    
+                    // Update button and status
+                    const spaceTravelBtn = document.getElementById('spaceTravelBtn');
+                    const spaceStatus = document.getElementById('spaceStatus');
+                    
+                    spaceTravelBtn.textContent = 'Traveling Through Space...';
+                    spaceTravelBtn.disabled = true;
+                    spaceStatus.textContent = 'Engaging hyperdrive...';
+                    spaceStatus.style.color = '#06b6d4';
+                    
+                    // Start space audio
+                    startSpaceTravelAudio();
+                    
+                    // Start animation
+                    animationId = requestAnimationFrame(drawStarfield);
+                    
+                    // Begin the image sequence
+                    beginImageSequence();
+                }
+
+                // Control the image sequence
+                function beginImageSequence() {
+                    console.log("Beginning image sequence...");
+                    
+                    // Show first image after 2 seconds
+                    setTimeout(() => {
+                        showNextImage();
+                    }, 2000);
+                }
+
+                // Show the next image in the sequence
+                function showNextImage() {
+                    if (imageIndex >= spaceImages.length) {
+                        // All images shown, end animation
+                        setTimeout(() => {
+                            endAnimation();
+                        }, 2000);
+                        return;
+                    }
+                    
+                    // Show current image
+                    showSpaceImage(imageIndex);
+                    
+                    // Schedule to hide this image after 2 seconds
+                    setTimeout(() => {
+                        hideSpaceImage();
+                        
+                        // Move to next image after 2 seconds (4 seconds total per image)
+                        setTimeout(() => {
+                            imageIndex++;
+                            showNextImage();
+                        }, 2000);
+                    }, 2000);
+                }
+
+                // End the animation
+                function endAnimation() {
+                    console.log("Ending space travel animation...");
+                    
+                    isAnimating = false;
+                    cancelAnimationFrame(animationId);
+                    
+                    // Hide the image container
+                    const spaceImageContainer = document.getElementById('spaceImageContainer');
+                    spaceImageContainer.classList.remove('visible', 'fading');
+                    
+                    // Fade out the canvas
+                    setTimeout(() => {
+                        canvas.classList.remove('visible');
+                    }, 1000);
+                    
+                    // Show gallery grid
+                    document.getElementById('spaceImageGallery').classList.remove('hidden');
+                    
+                    // Reset button and status
+                    const spaceTravelBtn = document.getElementById('spaceTravelBtn');
+                    const spaceStatus = document.getElementById('spaceStatus');
+                    
+                    spaceTravelBtn.textContent = '🚀 Launch Space Travel Gallery';
+                    spaceTravelBtn.disabled = false;
+                    spaceStatus.textContent = 'Journey complete! All images viewed.';
+                    spaceStatus.style.color = '#10b981';
+                    
+                    // Stop space audio
+                    stopSpaceTravelAudio();
+                }
+
+                // Setup hover effects
+                function setupHoverEffects() {
+                    try {
+                        document.querySelectorAll('.highlight-card').forEach(card => {
+                            card.addEventListener('mouseenter', function() {
+                                this.style.transform = 'translateY(-15px) rotateX(5deg) rotateY(5deg)';
+                            });
+
+                            card.addEventListener('mouseleave', function() {
+                                this.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+                            });
+                        });
+
+                        document.querySelectorAll('.house-item').forEach(item => {
+                            item.addEventListener('mouseenter', function() {
+                                this.style.transform = 'translateX(10px) scale(1.05)';
+                            });
+
+                            item.addEventListener('mouseleave', function() {
+                                this.style.transform = 'translateX(0) scale(1)';
+                            });
+                        });
+                    } catch (error) {
+                        console.warn("Hover effects setup issue:", error.message);
+                    }
+                }
+
+                // ============================================
+                // INITIALIZE EVERYTHING
+                // ============================================
+
+                document.addEventListener('DOMContentLoaded', function() {
+                    try {
+                        // Initialize music first
+                        initializeMusic();
+                        console.log("✓ Music initialized");
+                    } catch (error) {
+                        console.error("Music initialization failed:", error);
+                    }
+                    
+                    try {
+                        // Setup hover effects for cards
+                        setupHoverEffects();
+                        console.log("✓ Hover effects initialized");
+                    } catch (error) {
+                        console.error("Hover effects setup failed:", error);
+                    }
+                    
+                    try {
+                        // Initialize the space gallery
+                        initSpaceGallery();
+                        console.log("✓ Space travel gallery initialized");
+                    } catch (error) {
+                        console.error("Space gallery initialization failed:", error);
+                    }
+                    
+                    console.log("✓ Website fully loaded and ready!");
+                });
+
+                // ============================================
+                // HIDE/SHOW HEADER ON SCROLL
+                // ============================================
+                let lastScrollTop = 0;
+                const header = document.querySelector('.main-header');
+
+                window.addEventListener('scroll', function() {
+                    if (!header) return;
+                    
+                    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (currentScroll > lastScrollTop && currentScroll > 100) {
+                        // Scrolling DOWN - hide header
+                        header.classList.add('hide-header');
+                    } else {
+                        // Scrolling UP - show header
+                        header.classList.remove('hide-header');
+                    }
+                    
+                    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+                });
+            </script>
+        </body>
+        </html> 
